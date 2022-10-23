@@ -10,6 +10,7 @@ addToPathFront() {
     fi
 }
 
+export EDITOR=$VIM
 export GIT_EDITOR=$VIM
 
 addToPathFront /opt/homebrew/bin
