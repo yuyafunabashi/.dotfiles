@@ -1,27 +1,53 @@
+" Setup vim
 set guicursor=
 set scrolloff=8
 set number
+set numberwidth=4
 set relativenumber
 
+" Set indents
 set tabstop=4 softtabstop=4
 set shiftwidth=4 
 set expandtab
 set smartindent
 
+" Set backspace action
 set backspace=indent,eol,start
 
+" Disable sound
+set noerrorbells visualbell t_vb=
+
+" Install Plugins
 call plug#begin()
+
+" Theme
 Plug 'ayu-theme/ayu-vim'
+
+" FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Git
 Plug 'tpope/vim-fugitive'
+
+" Syntax highlighting
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'styled-components/vim-styled-components'
+
+" Github Copilot
+Plug 'github/copilot.vim' 
+
 call plug#end()
 
+" Theme
 set termguicolors     " enable true colors support
 let ayucolor="dark"   " for dark version of theme
 colorscheme ayu
 
-" Key bind remaps
+" Keybind remaps
 let mapleader = " "
 nnoremap <leader>pv :Vex<CR>
 nnoremap <leader><CR> :so ~/.vimrc<CR>
@@ -36,3 +62,4 @@ nnoremap <leader>Y gg"+yG
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
