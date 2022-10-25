@@ -1,6 +1,6 @@
-[submodule "netflix"]
-	path = meeopp
-	url = git@github.com:Yu2784/.dotfiles-meeopp.git
 [submodule "personal"]
 	path = personal
-	url = git@github.com:Yu2784/.dotfiles-personal.git
+    url = git@github.com:Yu2784/.dotfiles-personal.git
+[submodule "meeopp"]
+	path = meeopp
+	url = git@github.com:Yu2784/.dotfiles-meeopp.git
