@@ -1,4 +1,4 @@
-VIM='vim'
+VIM='nvim'
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -15,5 +15,15 @@ export GIT_EDITOR=$VIM
 
 addToPathFront /opt/homebrew/bin
 addToPathFront $HOME/.local/scripts
+addToPathFront $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:
+addToPathFront /usr/bin/git
 
 bindkey -s ^f "tmux-sessionizer\n"
+
+goPersonal() {
+    cd $HOME/personal
+}
+
+goWork() {
+    cd $HOME/work
+}

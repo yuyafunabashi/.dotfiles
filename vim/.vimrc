@@ -1,4 +1,5 @@
 " Setup vim
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 set guicursor=
 set scrolloff=8
 set number
@@ -11,11 +12,15 @@ set shiftwidth=4
 set expandtab
 set smartindent
 
+" List whitespaces
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬
+set showbreak=↪\ 
+
 " Set backspace action
 set backspace=indent,eol,start
 
-" Disable sound
-set noerrorbells visualbell t_vb=
+" Disable error bells
+set noerrorbells novisualbell t_vb=
 
 " Install Plugins
 call plug#begin()
@@ -30,6 +35,9 @@ Plug 'junegunn/fzf.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 
+" Comments
+Plug 'tpope/vim-commentary'
+
 " Syntax highlighting
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
@@ -43,9 +51,8 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 " Theme
-set termguicolors     " enable true colors support
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+set termguicolors
+colorscheme tokyonight-storm
 
 " Keybind remaps
 let mapleader = " "
@@ -59,6 +66,7 @@ vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
+nnoremap <leader><Tab><Tab> :set invlist<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
