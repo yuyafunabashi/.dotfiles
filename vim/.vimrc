@@ -64,7 +64,6 @@ nnoremap <C-k> :cnext<CR>
 nnoremap <C-j> :cprevious<CR>
 vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
-nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 nnoremap <leader><Tab><Tab> :set invlist<CR>
 
