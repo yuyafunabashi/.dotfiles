@@ -1,30 +1,55 @@
--- https://github.com/wbthomason/packer.nvim
+-- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  use 'folke/tokyonight.nvim'
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
-  use 'tpope/vim-fugitive'
+    use("folke/tokyonight.nvim")
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            require("rose-pine").setup()
+        end
+    })
 
-  use 'github/copilot.vim'
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use('nvim-treesitter/playground')
+    use('theprimeagen/harpoon')
+    use('mbbill/undotree')
+    use('tpope/vim-fugitive')
 
-  -- FZF
-  use {
-    'junegunn/fzf',
-    run = function() vim.fn['fzf#install']() end
-  }
-  use 'junegunn/fzf.vim'
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-  -- Syntax Highlighting
-  use 'pangloss/vim-javascript'
-  use 'leafgarland/typescript-vim'
-  use 'maxmellon/vim-jsx-pretty'
-  use 'jparise/vim-graphql'
-  use 'styled-components/vim-styled-components'
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lua' },
 
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-surround'
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    }
+
+    use("folke/zen-mode.nvim")
+    use("lukas-reineke/indent-blankline.nvim")
+    use("github/copilot.vim")
 end)
