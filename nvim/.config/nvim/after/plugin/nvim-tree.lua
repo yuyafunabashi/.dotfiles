@@ -22,26 +22,31 @@ nvimtree.setup({
 })
 
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>ee", ":NvimTreeFindFile<CR>")
+vim.keymap.set("n", "<leader>ge", ":NvimTreeFindFile<CR>")
 
 local function open_nvim_tree(data)
-	-- buffer is a [No Name]
 	local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-
-	-- buffer is a directory
 	local directory = vim.fn.isdirectory(data.file) == 1
 
 	if not no_name and not directory then
 		return
 	end
 
-	-- change to the directory
 	if directory then
 		vim.cmd.cd(data.file)
 	end
 
-	-- open the tree
 	require("nvim-tree.api").tree.open()
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+local function auto_update_path()
+	local buf = vim.api.nvim_get_current_buf()
+	local bufname = vim.api.nvim_buf_get_name(buf)
+	if vim.fn.isdirectory(bufname) or vim.fn.isfile(bufname) then
+		require("nvim-tree.api").tree.find_file(vim.fn.expand("%:p"))
+	end
+end
+
+vim.api.nvim_create_autocmd("BufEnter", { callback = auto_update_path })
