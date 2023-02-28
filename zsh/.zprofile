@@ -27,3 +27,6 @@ goPersonal() {
 goWork() {
     cd $HOME/work
 }
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(ssh-agent -s)"

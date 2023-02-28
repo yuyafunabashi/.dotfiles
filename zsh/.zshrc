@@ -113,9 +113,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.zprofile
+
 if [[ -f ~/.mprofile ]]; then
     source ~/.mprofile
 fi
+
 if [[ -f ~/.pprofile ]]; then
     source ~/.pprofile
 fi
