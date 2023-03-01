@@ -30,3 +30,4 @@ goWork() {
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(ssh-agent -s)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
