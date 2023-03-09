@@ -8,11 +8,6 @@ if not actions_setup then
 	return
 end
 
-local state_setup, state = pcall(require, "telescope.actions.state")
-if not state_setup then
-	return
-end
-
 local config_setup, config = pcall(require, "telescope.config")
 if not config_setup then
 	return
@@ -53,6 +48,7 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("refactoring")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
