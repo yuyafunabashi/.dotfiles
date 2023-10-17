@@ -2,12 +2,12 @@
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
-    echo "stow $folder"
-    stow --adopt -R $folder -t $HOME
+  echo "stow $folder"
+  stow --adopt -R $folder -t $HOME --no-folding
 done
 popd
 
-pushd ./meeopp
+pushd "$DOTFILES/meeopp"
 ./stow
 popd
 

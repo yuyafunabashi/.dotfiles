@@ -1,6 +1,6 @@
 [submodule "personal"]
-	path = personal
-    url = git@github.com:Yu2784/.dotfiles-personal.git
+  path = personal
+  url = git@github.com:yuyafunabashi/.dotfiles-personal.git
 [submodule "meeopp"]
-	path = meeopp
-	url = git@github.com:Yu2784/.dotfiles-meeopp.git
+  path = meeopp
+  url = git@github.com:yuyafunabashi/.dotfiles-meeopp.git

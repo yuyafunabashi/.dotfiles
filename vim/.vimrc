@@ -8,13 +8,13 @@ set relativenumber
 
 " Set indents
 set tabstop=4 softtabstop=4
-set shiftwidth=4 
+set shiftwidth=4
 set expandtab
 set smartindent
 
 " List whitespaces
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬
-set showbreak=↪\ 
+set showbreak=↪\
 
 " Set backspace action
 set backspace=indent,eol,start
@@ -46,7 +46,7 @@ Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'styled-components/vim-styled-components'
 
 " Github Copilot
-Plug 'github/copilot.vim' 
+Plug 'github/copilot.vim'
 
 call plug#end()
 

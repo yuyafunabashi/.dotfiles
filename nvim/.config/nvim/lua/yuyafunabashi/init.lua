@@ -1,33 +1,26 @@
 require("yuyafunabashi.set")
-require("yuyafunabashi.remap")
-
-local augroup = vim.api.nvim_create_augroup
-local YuyaFunabashiGroup = augroup("YuyaFunabashi", {})
-
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
-
-function R(name)
-	require("plenary.reload").reload_module(name)
-end
-
-autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
-})
-
-autocmd({ "BufWritePre" }, {
-	group = YuyaFunabashiGroup,
-	pattern = "*",
-	command = "%s/\\s\\+$//e",
-})
+require("yuyafunabashi.keymaps")
+require("yuyafunabashi.lazy")
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+local has = vim.fn.has
+local is_mac = has("macunix")
+local is_linux = has("unix")
+local is_win = has("win32")
+local is_wsl = has("wsl")
+
+if is_mac == 1 then
+  require("yuyafunabashi.os.macos")
+end
+if is_linux == 1 then
+  require("yuyafunabashi.os.linux")
+end
+if is_win == 1 then
+  require("yuyafunabashi.os.windows")
+end
+if is_wsl == 1 then
+  require("yuyafunabashi.os.wsl")
+end
