@@ -34,6 +34,12 @@ god() {
   cd $HOME/dev
 }
 
+ps -u $(whoami) | grep ssh-agent &> /dev/null
+if [ $? -ne 0 ];then
+    eval $(ssh-agent)
+    ssh-add
+fi
+trap 'ssh-agent -k; exit' 0
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-eval "$(ssh-agent -s)"
 source ~/.config/op/plugins.sh
