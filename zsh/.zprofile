@@ -17,12 +17,13 @@ export GIT_EDITOR=$EDITOR
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 
 addToPathFront $HOME/bin
-addToPathFront /opt/homebrew/bin
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:
 addToPathFront /usr/bin/git
 addToPathFront /usr/bin/
 addToPathFront $JAVA_HOME/bin
+addToPathFront /opt/homebrew/bin
+addToPathFront /opt/homebrew/sbin
 
 bindkey -s ^f "tmux-sessionizer\n"
 
@@ -34,12 +35,13 @@ god() {
   cd $HOME/dev
 }
 
-ps -u $(whoami) | grep ssh-agent &> /dev/null
-if [ $? -ne 0 ];then
-    eval $(ssh-agent)
-    ssh-add
+if [ -f ~/.config/op/plugins.sh ]; then
+  source ~/.config/op/plugins.sh
 fi
-trap 'ssh-agent -k; exit' 0
+source <(kubectl completion zsh)
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-source ~/.config/op/plugins.sh
+
+# Setting PATH for Python 3.13
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
+export PATH

@@ -28,6 +28,8 @@ return {
         "eslint",
         "bashls",
         "vimls",
+        "ansiblels",
+        "lua_ls",
       },
       automatic_installation = true,
     })
@@ -40,6 +42,7 @@ return {
         "black", -- python formatter
         "pylint", -- python linter
         "eslint_d", -- js linter
+        "ansible-lint",
       },
       automatic_installation = true,
     })
