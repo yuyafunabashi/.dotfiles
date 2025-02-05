@@ -4,7 +4,13 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    "L3MON4D3/LuaSnip",
+    {
+      "L3MON4D3/LuaSnip",
+      -- follow latest release.
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!).
+      build = "make install_jsregexp",
+    },
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     "onsails/lspkind.nvim",
@@ -38,24 +44,17 @@ return {
       }),
 
       sources = cmp.config.sources({
-        { name = "copilot", group_index = 2, priority = 60 },
         { name = "nvim_lsp" },
+        { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = "npm" },
-        { name = "luasnip" },
-        { name = "git" },
-        { name = "treesitter" },
-        { name = "zsh" },
-        { name = "tmux" },
-        { name = "vim_lsp" },
       }),
 
       formatting = {
         format = lspkind.cmp_format({
           maxwidth = 50,
           ellipsis_char = "...",
-          symbol_map = { Copilot = "" },
+          symbol_map = {},
         }),
       },
     })
