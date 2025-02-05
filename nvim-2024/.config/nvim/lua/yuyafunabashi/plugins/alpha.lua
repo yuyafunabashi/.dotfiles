@@ -1,15 +1,12 @@
 return {
   "goolord/alpha-nvim",
   event = "VimEnter",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    { "echasnovski/mini.icons", version = "*" },
-  },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local alpha = require("alpha")
-    local dashboard = require("alpha.themes.dashboard")
+    local startify = require("alpha.themes.startify")
 
-    dashboard.section.header.val = {
+    startify.section.header.val = {
       [[                                    ██████                                    ]],
       [[                                ████▒▒▒▒▒▒████                                ]],
       [[                              ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                              ]],
@@ -26,19 +23,11 @@ return {
       [[                        ████  ██▒▒██  ██▒▒▒▒██  ██▒▒██                        ]],
       [[                        ██      ██      ████      ████                        ]],
     }
-
-    dashboard.section.buttons.val = {
-      dashboard.button("e", "  New file", "<cmd>ene <CR>"),
-      dashboard.button("SPC e", " Open file explorer"),
-      dashboard.button("SPC f f", "󰈞  Find file"),
-      dashboard.button("SPC f g", "󰈞  Find git file"),
-      dashboard.button("SPC f r", "󰊄  Recently opened files"),
-      dashboard.button("SPC f l", "󰈬  Find word"),
-      dashboard.button("q", "Quit", "<cmd>qa<CR>"),
+    startify.section.header.opts = {
+      position = "center",
+      hl = "Warning",
     }
 
-    alpha.setup(dashboard.opts)
-
-    vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+    alpha.setup(startify.config)
   end,
 }

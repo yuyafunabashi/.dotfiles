@@ -18,13 +18,11 @@ return {
 
     telescope.setup({
       defaults = {
-        path_display = { "smart" },
         mappings = {
           i = {
             ["<C-c>"] = actions.close,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
-            ["<C-u>"] = false,
           },
         },
         vimgrep_arguments = vimgrep_arguments,
@@ -52,10 +50,11 @@ return {
     local builtin = require("telescope.builtin")
     local keymap = vim.keymap
 
-    keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
-    keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-    keymap.set("n", "<leader>fl", builtin.live_grep, { desc = "Telescope live grep" })
-    keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Telescope recent files" })
-    keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Telescope grep string under cursor" })
+    keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Find files" })
+    keymap.set("n", "<C-p>", builtin.git_files, { desc = "Find git files" })
+    keymap.set("n", "<leader>ps", function()
+      builtin.grep_string({ search = vim.fn.input("Grep > ") })
+    end, { desc = "Grep string" })
+    keymap.set("n", "<leader>pl", builtin.live_grep, { desc = "Live grep" })
   end,
 }

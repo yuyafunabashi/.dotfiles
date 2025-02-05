@@ -21,29 +21,30 @@ return {
 
     mason_lspconfig.setup({
       ensure_installed = {
-        "ts_ls",
+        "tsserver",
         "html",
         "cssls",
         "graphql",
         "eslint",
-
         "bashls",
         "vimls",
+        "ansiblels",
         "lua_ls",
-        "yamlls",
-        "jsonls",
-
-        "docker_compose_language_service",
-        "dockerls",
       },
+      automatic_installation = true,
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier",
-        "stylua",
-        "eslint_d",
+        "prettier", -- prettier formatter
+        "stylua", -- lua formatter
+        "isort", -- python formatter
+        "black", -- python formatter
+        "pylint", -- python linter
+        "eslint_d", -- js linter
+        "ansible-lint",
       },
+      automatic_installation = true,
     })
   end,
 }
