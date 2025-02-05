@@ -7,13 +7,16 @@ return {
     keymap.set("i", "<C-g>", function()
       return vim.fn["codeium#Accept"]()
     end, { expr = true, desc = "Accept completion" })
-    keymap.set("i", "<c-;>", function()
+
+    keymap.set("i", "<C-;>", function()
       return vim.fn["codeium#CycleCompletions"](1)
     end, { expr = true, desc = "Cycle completions" })
-    keymap.set("i", "<c-,>", function()
+
+    keymap.set("i", "<C-'>", function()
       return vim.fn["codeium#CycleCompletions"](-1)
     end, { expr = true, desc = "Cycle completions" })
-    keymap.set("i", "<c-x>", function()
+
+    keymap.set("i", "<C-x>", function()
       return vim.fn["codeium#Clear"]()
     end, { expr = true, desc = "Clear completions" })
   end,

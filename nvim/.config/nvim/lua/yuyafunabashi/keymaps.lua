@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local keymap = vim.keymap
 
@@ -32,18 +33,18 @@ keymap.set("i", "<C-c>", "<Esc>", { desc = "Escape" })
 
 keymap.set("n", "Q", "<Nop>")
 
-keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
-keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
+keymap.set("n", "<C-k>", "<cmd>cNext<CR>zz", { desc = "Next quickfix" })
+keymap.set("n", "<C-j>", "<cmd>cprevious<CR>zz", { desc = "Previous quickfix" })
 keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location" })
 keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location" })
 
 keymap.set(
   "n",
-  "<leader>s",
+  "<leader>sw",
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Substitute word under cursor" }
 )
-keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make executable" })
+keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make executable" })
 keymap.set(
   { "n", "v", "i" },
   "<C-f>",
@@ -57,3 +58,7 @@ keymap.set(
   "<cmd>so ~/.config/nvim/init.lua<CR><cmd>lua print('Reloaded nvim config')<CR>",
   { desc = "Reload config" }
 )
+
+keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Show diagnistic error messages" })
